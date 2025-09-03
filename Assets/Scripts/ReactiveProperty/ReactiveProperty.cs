@@ -5,32 +5,32 @@ using UnityEngine;
 
 public class ReactiveProperty<T>
 {
+    private T _value;
     public T Value {
         get
         {
-            return Value;
+            return _value;
         }
         set
         {
-            Value = value;
+            _value = value;
             foreach(var sub in Subscribers)
             {
-                sub.Invoke(Value);
+                sub.Invoke(_value);
             }
         }
     }
 
-    private List<Action<T>> Subscribers;
+    private List<Action<T>> Subscribers = new List<Action<T>>();
     
     public ReactiveProperty()
     {
-        Value = default(T);
-        Subscribers = new List<Action<T>>();
+        _value = default(T);
     }
 
     public ReactiveProperty(T value)
     {
-        Value = value;
+        _value = value;
     }
 
     public void Subscribe(Action<T> action)
