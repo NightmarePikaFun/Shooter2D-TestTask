@@ -21,10 +21,7 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            testAct.Invoke();
-        }
+
     }
 
     private void DisplayHealth(int value)

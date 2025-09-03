@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private EnemyBox _entityBox;
-
+    [SerializeField]
+    private HealthBar healthBar;
     public Entity entity { get; private set; } 
     private EnemyMove _moveLogic;
     private Transform _target;
@@ -16,7 +17,7 @@ public class Enemy : MonoBehaviour
     public Action Init(Transform target)
     {
         entity = new Entity(10);
-        _entityBox.Init(GetDamage);
+        _entityBox.Init(healthBar.Init(entity.Health.Value));
         _target = target;
         _moveLogic = new EnemyMove(_target, transform);
         return _moveLogic.ActivateMove;

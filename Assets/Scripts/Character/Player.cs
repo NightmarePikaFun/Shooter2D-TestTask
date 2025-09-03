@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private PlayerMovment _playerMovment;
     [SerializeField]
     private PlayerAttack _playerAttack;
+    [SerializeField]
+    private HealthBar _healthBar;
     private Entity _playerEntity;
 
     private void Awake()
@@ -22,7 +24,7 @@ public class Player : MonoBehaviour
     public void Init()
     {
         _playerEntity = new Entity(20);
-        _playerEntity.Health.Subscribe(DisplayHealth);
+        _playerEntity.Health.Subscribe(_healthBar.Init(_playerEntity.Health.Value));
         _box.Init(OnEnemyCollioson);
         _playerAttack.Init();
     }
@@ -30,10 +32,5 @@ public class Player : MonoBehaviour
     private void OnEnemyCollioson(int value)
     {
         _playerEntity.Health.Value -= value;
-    }
-
-    private void DisplayHealth(int value)
-    {
-        Debug.Log("PH->"+value);
     }
 }
