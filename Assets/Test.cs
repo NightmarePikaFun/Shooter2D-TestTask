@@ -6,12 +6,13 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     public Enemy enemy;
-    public Transform player;
+    public Player player;
 
     private Action testAct;
     private void Awake()
     {
-        testAct = enemy.Init(player);
+        testAct = enemy.Init(player.transform);
+        player.Init();
     }
     // Start is called before the first frame update
     void Start()

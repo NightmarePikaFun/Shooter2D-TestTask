@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerMovment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float speed = 1.0f;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.up * speed * 0.05f);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.down * speed * 0.05f);
+        }
     }
 }
