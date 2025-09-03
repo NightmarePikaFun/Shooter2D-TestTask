@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
         Enemy enemy = ObjectPool.Instance.GetEnemy();
         if(enemy != null)
         {
-            Vector2 spawnPos = new Vector2(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value - 0.5f);
+            Vector3 spawnPos = new Vector3(UnityEngine.Random.value - 0.5f, UnityEngine.Random.value - 0.5f);
             spawnPos.x = MathH.GetSpawnCoordOutRange(spawnPos.x, 15);
             spawnPos.y = MathH.GetSpawnCoordOutRange(spawnPos.y, 15);
-            enemy.transform.position = spawnPos;
+            enemy.transform.position = Player.Instance.transform.position+spawnPos;
             enemyActivators.Add(enemy.Init(Player.Instance.transform));
             enemy.gameObject.SetActive(true);
         }

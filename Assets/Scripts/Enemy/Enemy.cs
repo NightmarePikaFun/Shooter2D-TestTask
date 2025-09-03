@@ -39,7 +39,8 @@ public class Enemy : MonoBehaviour
 
     private void GetDamage(int value)
     {
-        entity.ChangeHealth(value);
+        Debug.Log(value);
+        entity.ChangeHealth(-value);
         if(entity.Health.Value <= 0)
         {
             DestroyEntity();

@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(_moveVector*_coef);
+        transform.Translate(_moveVector);
         if (Vector3.Distance(transform.position, _startPoint) > 20)
             StoreBullet();
     }

@@ -25,6 +25,14 @@ public class PlayerAttack : MonoBehaviour
             canAttack = false;
             currentWeapon.DoAttack(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentWeapon = ContentManager.Instance.GetWeaponByIndex(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentWeapon = ContentManager.Instance.GetWeaponByIndex(1);
+        }
     }
 
     private IEnumerator AttackCD()

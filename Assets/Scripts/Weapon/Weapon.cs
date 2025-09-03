@@ -31,6 +31,10 @@ public class Weapon : ScriptableObject, IWeaponAttack
     {
         Type wsType = WeaponScript.GetClass();
         Weapon tmp = (Weapon)Activator.CreateInstance(Type.GetType(wsType.AssemblyQualifiedName));
+        tmp.Name = Name;
+        tmp.Damage = Damage;
+        tmp.attackTime = attackTime;
+        tmp.weaponSprite = weaponSprite;
         weaponAttack = tmp as IWeaponAttack;
     }
 }

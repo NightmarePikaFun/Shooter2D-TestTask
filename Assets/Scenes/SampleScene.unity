@@ -373,12 +373,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2081308385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
@@ -559,8 +559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8a6c2cf13d91045ace8f0e0172eaa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ePoolSize: 10
-  bPoolSize: 10
+  ePoolSize: 100
+  bPoolSize: 2000
   ePrefab: {fileID: 2628852888632903239, guid: f115b82ff67924549855e30e76ab51ee, type: 3}
   bPrefab: {fileID: 391897788466082514, guid: 8016ad1ad0126e242870722a1898c504, type: 3}
   enemyPool: []
@@ -903,7 +903,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 519420032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2081308386
@@ -1100,7 +1101,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 2100012558}
   - {fileID: 2081308385}

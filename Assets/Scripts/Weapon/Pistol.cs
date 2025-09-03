@@ -10,7 +10,7 @@ public class Pistol : Weapon, IWeaponAttack
         Bullet bullet = ObjectPool.Instance.GetBullet();
         if(bullet == null )
             return;
-        bullet.Init(Damage, attackVector);
+        bullet.Init(base.Damage, attackVector);
         bullet.gameObject.SetActive(true);
     }
 }
