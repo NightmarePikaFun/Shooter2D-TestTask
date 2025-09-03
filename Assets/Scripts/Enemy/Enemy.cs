@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private EnemyBox _entityBox;
+
     public Entity entity { get; private set; } 
     private EnemyMove _moveLogic;
-    private EnemyBox _entityBox;
     private Transform _target;
     private float _speed = 0.05f;
 

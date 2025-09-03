@@ -14,9 +14,13 @@ public class Player : MonoBehaviour
     private PlayerAttack _playerAttack;
     private Entity _playerEntity;
 
-    public void Init()
+    private void Awake()
     {
         Instance = this;
+    }
+
+    public void Init()
+    {
         _playerEntity = new Entity(20);
         _playerEntity.Health.Subscribe(DisplayHealth);
         _box.Init(OnEnemyCollioson);
