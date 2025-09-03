@@ -36,7 +36,7 @@ public class ObjectPool : MonoBehaviour
 
     public Bullet GetBullet()
     {
-        if (bulletPool.Count < 0)
+        if (bulletPool.Count <= 0)
             return null;
         Bullet bullet = bulletPool[0];
         bulletPool.Remove(bullet);

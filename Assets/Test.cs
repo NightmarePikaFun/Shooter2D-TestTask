@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public Enemy enemy;
     public Player player;
 
     private Action testAct;
     private void Awake()
     {
-        testAct = enemy.Init(player.transform);
+        //testAct = enemy.Init(player.transform);
         player.Init();
     }
     // Start is called before the first frame update
     void Start()
     {
-        enemy.entity.Health.Subscribe(DisplayHealth);
+        
     }
 
     // Update is called once per frame
@@ -26,10 +25,6 @@ public class Test : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.G))
         {
             testAct.Invoke();
-        }
-        if(Input.GetKeyDown(KeyCode.H)) 
-        {
-            enemy.entity.Health.Value -= 1;
         }
     }
 

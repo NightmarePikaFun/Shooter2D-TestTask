@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef251e555185fd54fa1bc56c64e86fae, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  <MonoScript>k__BackingField: {fileID: 11500000, guid: 2c193a854de5aff4d999cb194b2b56f3, type: 3}
+  <WeaponScript>k__BackingField: {fileID: 11500000, guid: 2c193a854de5aff4d999cb194b2b56f3, type: 3}
   Name: Pistol
   Damage: 5
+  attackTime: 0.5
+  weaponSprite: {fileID: 0}
