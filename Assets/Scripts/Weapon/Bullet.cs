@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public int damage { get; private set; }
+
+
     private Vector3 _moveVector;
-    private int _damage;
     private Vector3 _startPoint;
     private int _baseRange = 5;
     private float _coef = 1.0f;
 
-    public void Init(int damage, Vector3 vector)
+    public void Init(int inDamage, Vector3 vector)
     {
-        _damage = damage;
+        vector = vector - Player.Instance.transform.position;
+        damage = inDamage;
         _coef = _baseRange/ Vector3.Magnitude(vector);
         _moveVector = vector.normalized;
-        transform.position = _moveVector*1.5f;//TODO: add player pos
+        transform.position = Player.Instance.transform.position+ _moveVector *1.5f;//TODO: add player pos
         _startPoint = transform.position;
     }
 

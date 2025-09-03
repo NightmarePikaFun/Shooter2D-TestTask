@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
+
     [SerializeField]
     private PlayerBox _box;
     [SerializeField]
@@ -14,27 +16,16 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
+        Instance = this;
         _playerEntity = new Entity(20);
         _playerEntity.Health.Subscribe(DisplayHealth);
         _box.Init(OnEnemyCollioson);
         _playerAttack.Init();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnemyCollioson(int value)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnEnemyCollioson()
-    {
-        _playerEntity.Health.Value -= 1;
+        _playerEntity.Health.Value -= value;
     }
 
     private void DisplayHealth(int value)
