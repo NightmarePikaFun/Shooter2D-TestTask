@@ -1,15 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    Entity test;
+    public Enemy enemy;
+    public Transform player;
+
+    private Action testAct;
+    private void Awake()
+    {
+        testAct = enemy.Init(player);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        test = new Entity(10);
-        test.Health.Subscribe(DisplayHealth);
+        enemy.entity.Health.Subscribe(DisplayHealth);
     }
 
     // Update is called once per frame
@@ -17,11 +24,11 @@ public class Test : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.G))
         {
-            test.Health.Value += 1;
+            testAct.Invoke();
         }
         if(Input.GetKeyDown(KeyCode.H)) 
         {
-            test.Health.Value -= 1;
+            enemy.entity.Health.Value -= 1;
         }
     }
 
