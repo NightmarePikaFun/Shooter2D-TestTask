@@ -5,17 +5,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private PlayerBox box;
+    private PlayerBox _box;
     [SerializeField]
-    private PlayerMovment playerMovment;
-
+    private PlayerMovment _playerMovment;
+    [SerializeField]
+    private PlayerAttack _playerAttack;
     private Entity _playerEntity;
 
     public void Init()
     {
         _playerEntity = new Entity(20);
         _playerEntity.Health.Subscribe(DisplayHealth);
-        box.Init(OnEnemyCollioson);
+        _box.Init(OnEnemyCollioson);
+        _playerAttack.Init();
     }
 
     // Start is called before the first frame update

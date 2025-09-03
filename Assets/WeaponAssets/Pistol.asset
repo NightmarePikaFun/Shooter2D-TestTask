@@ -15,5 +15,5 @@ MonoBehaviour:
   <WeaponScript>k__BackingField: {fileID: 11500000, guid: 2c193a854de5aff4d999cb194b2b56f3, type: 3}
   Name: Pistol
   Damage: 5
-  attackTime: 0.5
+  attackTime: 1.5
   weaponSprite: {fileID: 0}

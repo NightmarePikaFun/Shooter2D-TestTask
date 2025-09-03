@@ -15,5 +15,5 @@ MonoBehaviour:
   <WeaponScript>k__BackingField: {fileID: 11500000, guid: cea949153a342034797ea915a93ad68d, type: 3}
   Name: Shootgun
   Damage: 1
-  attackTime: 0.5
+  attackTime: 3
   weaponSprite: {fileID: 0}

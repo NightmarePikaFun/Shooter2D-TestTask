@@ -992,8 +992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b006f008fac880d4cb535148ea0b5d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 2081308388}
-  playerMovment: {fileID: 2081308390}
+  _box: {fileID: 2081308388}
+  _playerMovment: {fileID: 2081308390}
+  _playerAttack: {fileID: 2081308391}
 --- !u!114 &2081308390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,13 +1017,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2081308383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53c452a69907f2c409b349054bcc6d60, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e4b774122e7cd946b5bd6fddd5d1070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 11400000, guid: 25458d86d36bc4741b62679f2aba5c4e, type: 2}
-  - {fileID: 11400000, guid: d534e70c7e693794393d88b85d13f6c6, type: 2}
-  currentWeaponIndex: 0
 --- !u!1 &2100012556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2100012558}
   - component: {fileID: 2100012557}
+  - component: {fileID: 2100012559}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -1052,8 +1050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e3e439c3214f14aa394646f373f566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  player: {fileID: 2081308389}
 --- !u!4 &2100012558
 Transform:
   m_ObjectHideFlags: 0
@@ -1069,6 +1065,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2100012559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100012556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fe2e1545e2dcb48a07b18d7d38ae2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2081308389}
+  _weapons:
+  - {fileID: 11400000, guid: 25458d86d36bc4741b62679f2aba5c4e, type: 2}
+  - {fileID: 11400000, guid: d534e70c7e693794393d88b85d13f6c6, type: 2}
+  _currentWeaponIndex: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
