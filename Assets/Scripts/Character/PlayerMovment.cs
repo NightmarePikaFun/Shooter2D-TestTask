@@ -51,7 +51,7 @@ public class PlayerMovment : MonoBehaviour
             Vector2 movePos = secondTouchPos - touchStartPos;
             movePos = Vector2.ClampMagnitude(movePos, 100);
             movePos = movePos / 100;
-            transform.Translate(movePos * speed * 0.5f);
+            transform.Translate(movePos * speed * 0.15f);
         }
 #endif
     }
