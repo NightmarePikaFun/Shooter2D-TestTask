@@ -11,6 +11,8 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack = true;
     private float attackTime = 1.0f;
 
+    public bool canMove = false;
+
     public void Init()
     {
         currentWeapon = ContentManager.Instance.GetWeaponByIndex(0);
@@ -21,6 +23,8 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+            return;
         if (currentWeapon == null)
             return;
         if (Input.GetMouseButton(0) && canAttack)

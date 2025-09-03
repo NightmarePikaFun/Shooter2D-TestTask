@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-
+    [SerializeField]
+    private ScreenUI screenUI;
     [SerializeField]
     private int enemyCount = 0;
     [SerializeField]
@@ -50,6 +51,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        Player.Instance.Init();
+        Player.Instance.SwitchPlayerState();
+        foreach(Enemy enemy in enemies)
+        {
+            enemy.DestroyEntity(true);
+        }
+        spawner = StartCoroutine(EnemySpawner());
+    }
+
+    public void PlayerDead()
+    {
+        StopCoroutine(spawner);
+        foreach(Enemy enemy in enemies)
+        {
+            enemy.Diactivate();
+        }
+        screenUI.ShowLoseScreen();
+    }
 
     public void RemoveEnemy(Enemy enemy)
     {

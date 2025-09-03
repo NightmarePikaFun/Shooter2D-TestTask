@@ -34,10 +34,11 @@ public class Enemy : MonoBehaviour
         return _moveLogic.ActivateMove;
     }
 
-    public void DestroyEntity()
+    public void DestroyEntity(bool isRestart = false)
     {
         ObjectPool.Instance.AddEnemyToPool(this);
-        GameManager.Instance.RemoveEnemy(this);
+        if(!isRestart)
+            GameManager.Instance.RemoveEnemy(this);
         gameObject.SetActive(false);
     }
 
@@ -51,6 +52,11 @@ public class Enemy : MonoBehaviour
     }
 
     public int DamageToPlayer() => _damage;
+
+    public void Diactivate()
+    {
+        _moveLogic.DiactivateMove();
+    }
 
     private void GetDamage(int value)
     {

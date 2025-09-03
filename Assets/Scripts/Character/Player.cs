@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     {
         _playerEntity = new Entity(20);
         _playerEntity.Health.Subscribe(_healthBar.Init(_playerEntity.Health.Value));
+        _playerEntity.Health.Value = _playerEntity.Health.Value;
         _box.Init(OnEnemyCollioson);
         _playerAttack.Init();
     }
@@ -32,5 +33,16 @@ public class Player : MonoBehaviour
     private void OnEnemyCollioson(int value)
     {
         _playerEntity.Health.Value -= value;
+        if(_playerEntity.Health.Value <= 0)
+        {
+            SwitchPlayerState();
+            GameManager.Instance.PlayerDead();
+        }
+    }
+
+    public void SwitchPlayerState()
+    {
+        _playerMovment.canMove = !_playerMovment.canMove;
+        _playerAttack.canMove = !_playerAttack.canMove;
     }
 }

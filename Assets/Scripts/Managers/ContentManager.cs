@@ -20,7 +20,7 @@ public class ContentManager : MonoBehaviour
         {
             weapon.CreateInstance();
         }
-        player.Init();
+        
     }
 
     public Weapon GetWeaponByIndex(int index)

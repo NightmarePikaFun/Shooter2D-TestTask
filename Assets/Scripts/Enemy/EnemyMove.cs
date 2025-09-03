@@ -22,4 +22,5 @@ public class EnemyMove
 
     public void ActivateMove() => canMove = true;
 
+    public void DiactivateMove() => canMove = false;
 }
