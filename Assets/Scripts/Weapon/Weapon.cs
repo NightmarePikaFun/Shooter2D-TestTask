@@ -19,6 +19,8 @@ public class Weapon : ScriptableObject, IWeaponAttack
 
     private IWeaponAttack weaponAttack;
 
+    public float GetAttackTime() => attackTime;
+
     public virtual void DoAttack(Vector3 attackVector)
     {
 
