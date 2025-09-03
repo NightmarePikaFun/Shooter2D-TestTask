@@ -7,7 +7,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon", menuName = "Weapon/Create weapon", order = 1)]
 public class Weapon : ScriptableObject, IWeaponAttack
 {
+#if UNITY_EDITOR
     [field: SerializeField] public MonoScript WeaponScript { get; private set; }
+#endif
+    [SerializeField]
+    private string ClassName;
     [SerializeField]
     private string Name;
     [SerializeField]
@@ -29,8 +33,15 @@ public class Weapon : ScriptableObject, IWeaponAttack
 
     public void CreateInstance()
     {
+#if UNITY_EDITOR
         Type wsType = WeaponScript.GetClass();
-        Weapon tmp = (Weapon)Activator.CreateInstance(Type.GetType(wsType.AssemblyQualifiedName));
+        ClassName = wsType.AssemblyQualifiedName;
+        EditorUtility.SetDirty(this);
+#endif
+        if (string.IsNullOrEmpty(ClassName))
+            ClassName = "Pistol, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null";
+        Weapon tmp = (Weapon)Activator.CreateInstance(Type.GetType(ClassName));
+        
         tmp.Name = Name;
         tmp.Damage = Damage;
         tmp.attackTime = attackTime;

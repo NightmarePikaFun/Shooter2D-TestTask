@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer weaponSprite;
+    [SerializeField]
+    private Button firstWeapon;
+    [SerializeField]
+    private Button secondWeapon;
 
     private Weapon currentWeapon;
     private bool canAttack = true;
@@ -13,10 +18,32 @@ public class PlayerAttack : MonoBehaviour
 
     public bool canMove = false;
 
+#if UNITY_ANDROID
+    private Vector2 touchStartPos;
+    private Vector2 secondTouchPos;
+#endif
+
+    private void Awake()
+    {
+        firstWeapon.onClick.AddListener(() =>
+        {
+            SetWeapon(ContentManager.Instance.GetWeaponByIndex(0));
+        });
+        secondWeapon.onClick.AddListener(() =>
+        {
+            SetWeapon(ContentManager.Instance.GetWeaponByIndex(1));
+        });
+#if !UNITY_ANDROID
+        firstWeapon.gameObject.SetActive(false);
+        secondWeapon.gameObject.SetActive(false);
+#endif
+
+    }
+
     public void Init()
     {
-        currentWeapon = ContentManager.Instance.GetWeaponByIndex(0);
-        attackTime = currentWeapon.GetAttackTime();
+        SetWeapon( ContentManager.Instance.GetWeaponByIndex(0));
+        
         StartCoroutine(AttackCD());
     }
 
@@ -27,6 +54,7 @@ public class PlayerAttack : MonoBehaviour
             return;
         if (currentWeapon == null)
             return;
+#if !UNITY_ANDROID
         if (Input.GetMouseButton(0) && canAttack)
         {
             canAttack = false;
@@ -40,11 +68,35 @@ public class PlayerAttack : MonoBehaviour
         {
             SetWeapon(ContentManager.Instance.GetWeaponByIndex(1));
         }
+#endif
+#if UNITY_ANDROID
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began)
+            {
+                touchStartPos = touch.position;
+                secondTouchPos = touchStartPos;
+            }
+            if(touch.phase == TouchPhase.Moved)
+            {
+                secondTouchPos = touch.position;
+            }
+            if (!canAttack)
+                return;
+            if (Vector2.Distance(secondTouchPos, touchStartPos) < 0.01f)
+                currentWeapon.DoAttack(Vector3.up);
+            else
+                currentWeapon.DoAttack(secondTouchPos- touchStartPos );
+            canAttack = false;
+        }
+#endif
     }
 
     private void SetWeapon(Weapon weapon)
     {
         currentWeapon = weapon;
+        attackTime = currentWeapon.GetAttackTime();
         weaponSprite.sprite = weapon.weaponSprite;
     }
 

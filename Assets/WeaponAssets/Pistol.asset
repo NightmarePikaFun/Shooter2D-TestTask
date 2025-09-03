@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   <WeaponScript>k__BackingField: {fileID: 11500000, guid: 2c193a854de5aff4d999cb194b2b56f3, type: 3}
+  ClassName: Pistol, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   Name: Pistol
   Damage: 5
   attackTime: 0.5

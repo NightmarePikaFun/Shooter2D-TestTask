@@ -10,13 +10,11 @@ public class Bullet : MonoBehaviour
     private Vector3 _moveVector;
     private Vector3 _startPoint;
     private int _baseRange = 5;
-    private float _coef = 1.0f;
 
     public void Init(int inDamage, Vector3 vector)
     {
         vector = vector - Player.Instance.transform.position;
         damage = inDamage;
-        _coef = _baseRange/ Vector3.Magnitude(vector);
         _moveVector = vector.normalized;
         transform.position = Player.Instance.transform.position+ _moveVector *1.5f;//TODO: add player pos
         _startPoint = transform.position;
