@@ -16,4 +16,4 @@ MonoBehaviour:
   Name: Pistol
   Damage: 5
   attackTime: 0.5
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: 284493847, guid: c472fd098d5e7c3449e469a4d004511b, type: 3}

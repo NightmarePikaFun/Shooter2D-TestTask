@@ -15,10 +15,12 @@ public class PlayerBox : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        Enemy enemy;
+        collision.gameObject.TryGetComponent<Enemy>(out enemy);
+        if (enemy != null)
         {
-            collision.gameObject.GetComponent<Enemy>().DestroyEntity();
-            _triggeredAction.Invoke(1);
+            enemy.DestroyEntity();
+            _triggeredAction.Invoke(enemy.DamageToPlayer());
         }
     }
 }

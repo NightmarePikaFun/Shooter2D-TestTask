@@ -16,4 +16,4 @@ MonoBehaviour:
   Name: Shootgun
   Damage: 1
   attackTime: 3
-  weaponSprite: {fileID: 0}
+  weaponSprite: {fileID: -910810729, guid: c472fd098d5e7c3449e469a4d004511b, type: 3}

@@ -8,7 +8,7 @@ public class Shootgun : Weapon, IWeaponAttack
     private int bulletCount = 5;
     public override void DoAttack(Vector3 attackVector)
     {
-        float bulletPadding = 0.15f;
+        float bulletPadding = 0.02f;
         int counter = -bulletCount / 2;
         for (int i = 0; i < bulletCount; i++)
         {

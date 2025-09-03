@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField]
+    private SpriteRenderer weaponSprite;
+
     private Weapon currentWeapon;
     private bool canAttack = true;
     private float attackTime = 1.0f;
@@ -27,12 +30,18 @@ public class PlayerAttack : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            currentWeapon = ContentManager.Instance.GetWeaponByIndex(0);
+            SetWeapon(ContentManager.Instance.GetWeaponByIndex(0));
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currentWeapon = ContentManager.Instance.GetWeaponByIndex(1);
+            SetWeapon(ContentManager.Instance.GetWeaponByIndex(1));
         }
+    }
+
+    private void SetWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
+        weaponSprite.sprite = weapon.weaponSprite;
     }
 
     private IEnumerator AttackCD()

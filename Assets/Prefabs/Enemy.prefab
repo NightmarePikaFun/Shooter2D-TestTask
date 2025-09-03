@@ -406,6 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _entityBox: {fileID: 8379719787535843882}
   healthBar: {fileID: 3796747607569940209}
+  _sprite: {fileID: 6074032055242996491}
 --- !u!61 &3396801551369333647
 BoxCollider2D:
   m_ObjectHideFlags: 0
