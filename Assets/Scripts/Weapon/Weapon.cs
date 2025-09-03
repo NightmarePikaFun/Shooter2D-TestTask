@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+[CreateAssetMenu(fileName = "Weapon", menuName = "Weapon/Create weapon", order = 1)]
+public class Weapon : WeaponBase<Pistol>, IWeaponAttack
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private string Name;
+    [SerializeField]
+    protected int Damage;
+    [SerializeField]
+    public Sprite weaponSprite;
 
-    // Update is called once per frame
-    void Update()
+    public virtual void Attack(Vector3 attackVector)
     {
-        
+        Debug.Log("Attack!");
     }
 }

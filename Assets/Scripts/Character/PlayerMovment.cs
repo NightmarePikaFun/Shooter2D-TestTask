@@ -18,5 +18,13 @@ public class PlayerMovment : MonoBehaviour
         {
             transform.Translate(Vector3.down * speed * 0.05f);
         }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left * speed * 0.05f);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * speed * 0.05f);
+        }
     }
 }

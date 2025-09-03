@@ -20,8 +20,9 @@ public class ObjectPool : MonoBehaviour
     [SerializeField]
     private List<Bullet> bulletPool;
 
-    public void AddEnemyToPool(Enemy enemy) => enemyPool.Add(enemy);
+    public static ObjectPool Instance;
 
+    public void AddEnemyToPool(Enemy enemy) => enemyPool.Add(enemy);
     public void AddBulletToPool(Bullet bullet) => bulletPool.Add(bullet);
 
     public Enemy GetEnemy()
@@ -44,6 +45,7 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         for(int i = 0; i < ePoolSize; i++)
         {
             enemyPool.Add(Instantiate(ePrefab));
